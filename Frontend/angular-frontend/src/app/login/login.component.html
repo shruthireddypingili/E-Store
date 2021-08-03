@@ -1,0 +1,77 @@
+<div class="container">
+        <div class="row">
+            <div class="col-md-7 style" >
+                <h3 class="header"> Welcome to E-Store!!!</h3>
+                <p class="text-center">Welcome to our online store! Our team is proud to announce that we're now open for business, and we look forward to serving you all in the future. 
+                    Feel free to browse our entire product catalog, and let us know if you have any questions, comments or concerns about the items housed within. </p>
+                
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="card card-container">
+                
+                        <h4 class="text-center">User Login</h4>
+                       
+                        <br />
+                  
+
+                        <form (ngSubmit)="loginForm.form.valid" #loginForm = "ngForm" >
+                    
+                            <div class="mb-3">
+                                <input type="email" class="form-control" name="email"  #email="ngModel"
+                                [(ngModel)]="user.email" placeholder="Email" [ngClass]="{ 'is-invalid': email.touched && email.invalid }" required email>
+    
+                                <div *ngIf="email.touched && email.invalid" class="invalid-feedback" > 
+                                    <div *ngIf="email.errors.required">
+                                       User Email is required 
+                                    </div>
+                                    <div *ngIf="email.errors.email">
+                                        Email is not valid 
+                                    </div>
+                                    
+                                </div>
+                            </div>
+    
+                            <div class="mb-3">
+                                <input type="password" class="form-control" name="password" 
+                                #password="ngModel"
+                                [(ngModel)]="user.password"  placeholder="Password" [ngClass]="{ 'is-invalid': password.touched && password.invalid }" required>
+    
+                                <div *ngIf="password.touched && password.invalid" class="invalid-feedback" > 
+                                    <div *ngIf="password.errors.required">
+                                       User Password is required
+        
+                                    </div>
+                                   
+                                </div>
+                            </div>
+    
+                            <div id="remember" class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="remember-me"> Remember me
+                                </label>
+                            </div>
+                            <div class="mb-3">
+                                <input  class="btn btn-primary" type="submit" (click)="SignIn()"  value="Sign in" [disabled]="!loginForm.form.valid">
+                            </div>
+                        </form>
+    
+
+                    <div>
+                    <a href="#">Forgot the password?</a>
+                    <a class="link-warning" routerLink ='/register'> New User</a>
+                   
+                    
+                </div>
+                </div>
+                </div>
+               
+            </div>
+            
+            
+</div>
+        
+
+    
+

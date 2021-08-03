@@ -1,0 +1,20 @@
+
+.body{
+    position: relative;
+    min-height: 75vh;
+}
+  
+  .bg{
+    background-color: #e1cff8;
+}
+
+.font{
+    font-size: large;
+}
+
+
+.footer{
+    position: absolute;
+    width: 100%;
+                /* Footer height */
+  }

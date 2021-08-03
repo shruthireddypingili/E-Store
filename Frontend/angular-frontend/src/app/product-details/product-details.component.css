@@ -1,0 +1,49 @@
+.btn1{
+    background-color:#f7b439;
+    margin:0 0.3em 0.3em 0;
+    border-radius: 15px 15px 15px 15px ;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#0f0303;
+    text-align:center;
+    transition: all 0.2s;
+        
+        
+}
+
+.btn1:hover{
+
+background-color:#b8ac44;
+     border-radius: 15px 15px 15px 15px ;
+}
+
+.btn2{
+    margin:0 0.3em 0.3em 0;
+    border-radius: 15px 15px 15px 15px ;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#0f0303;
+    text-align:center;
+    transition: all 0.2s;
+        
+        
+}
+
+.btn2:hover{
+
+background-color:#2451e6;
+     border-radius: 15px 15px 15px 15px ;
+}
+
+.color1{
+    color: red;
+}
+
+.color2{
+    color:green;
+}
+

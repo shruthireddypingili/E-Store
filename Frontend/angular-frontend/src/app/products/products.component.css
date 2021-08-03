@@ -1,0 +1,43 @@
+.card{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    height: fit-content;
+    width: 350px;
+    background-color: rgb(225, 216, 231);
+    border-radius: 12px 12px 12px 12px;
+   
+}
+
+.search{
+    margin-top: 20px;
+    margin-bottom: 25px;
+    margin-left: 10%;
+    border-radius: 12px 12px 12px 12px;
+    
+
+   
+}
+
+.color1{
+    color: red;
+}
+
+.color2{
+    color: green
+}
+
+.notify-badge{
+    position: absolute;
+    height:2rem;
+    top:0.5rem;
+    right:1.5rem;
+    width:2rem;
+    text-align: left;
+    line-height: 2rem;;
+    font-size: 1rem;
+    border-radius: 15%;
+    color:rgb(20, 8, 8);
+    
+}
+
+

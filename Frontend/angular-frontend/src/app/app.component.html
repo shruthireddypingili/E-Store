@@ -1,0 +1,80 @@
+<nav class="navbar navbar-expand navbar-light bg">
+  <a class="navbar-brand mb-0 h1 " routerLink = 'home' style="font-size:150%" >
+    <img src="../assets/images/logo.jpg" alt="Logo"></a>
+
+  <div class="collapse navbar-collapse" id="navbarsExample02">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link font" routerLink = 'home'>HOME<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link font " routerLink ='products'>SHOP</a>
+      </li>
+      <div *ngIf="!isLoggedIn">
+      <li class="nav-item">
+        <a class="nav-link font "routerLink ='login'>LOGIN</a>
+      </li>
+      </div>
+
+
+      
+  </ul>
+  
+   
+    <form class=" form-inline my-2 my-md-0">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a routerLink='cart' ><img src=" ../assets/images/cart1.png" class="rounded" alt="Logo" style="width:35px;" ></a>
+          <span *ngIf = "cartItems != null" class="badge bg-warning rounded-pill" style="margin-right: 20px;">{{cartItems.length}}</span>
+      </li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right" style="margin-right: 80px;">
+      <div *ngIf='user.role === "USER"'>
+        <li class="nav-item dropdown ">
+          <a class="nav-link dropdown-toggle font" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user.firstName}}</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown03">
+            <a class="dropdown-item" routerLink = 'orders'> Track Orders</a>
+            <a class="dropdown-item" routerLink = 'user-profile'>Your Profile</a>
+            <a *ngIf="isLoggedIn" class="dropdown-item" routerLink = 'login' (click)="logout()" >Logout</a>
+          </div>
+        </li>
+        </div>
+     
+
+     
+        <div *ngIf='user.role === "ADMIN"'>
+          <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle font" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user.firstName}}</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown03">
+              <a class="dropdown-item " routerLink = 'manage-products'>Manage Products</a>
+              <a class="dropdown-item" routerLink = 'manage-orders'>Manage Orders</a>
+              <a class="dropdown-item" routerLink = 'manage-users'>Manage Users</a>
+              <a class="dropdown-item" routerLink = 'orders'> Track Orders</a>
+              <a class="dropdown-item" routerLink = 'user-profile'>Your Profile</a>
+              <a *ngIf="isLoggedIn" class="dropdown-item" routerLink = 'login' (click)="logout()" >Logout</a>
+    
+            </div>
+          </li>
+          </div>
+
+      </ul>
+
+    </form>
+  </div>
+</nav>
+
+
+  <div class="body">
+    <router-outlet>
+
+    </router-outlet>
+  </div>
+
+  <footer class="footer" style=" background-color: #e1cff8; margin-top: 30px;">
+    <div class="container" style="height: 50px;">
+     <label class="text-muted mt-1" >@Copyright Estore</label>
+    </div>
+    
+  </footer>
+  

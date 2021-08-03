@@ -1,0 +1,185 @@
+<div class="container margin">
+    <div class="row gutters">
+    <div class="col-xl-3 col-lg-3 col-md-12">
+    <div class="card" style="margin-top: 20px;">
+        <div class="card-body">
+            <div class="account-settings">
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <img src="../assets/images/pic3.png" alt="image">
+                    </div>
+                    <h5 class="user-name" >{{user.firstName}} {{user.lastName}}</h5>
+                    <h6 class="user-email">{{user.email}}</h6>
+                    <button class="btn btn-success btn-sm mr-3">Delete Img</button>
+                    <button class="btn btn-danger btn-sm">Upload Img</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="col-md-8">
+        <div class="card mb-3" style="margin-top: 20px;">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12">
+                        <h6 class="text-primary">Personal Details</h6>
+                    </div>
+                    <hr>
+                    <div class="col-sm-3">
+                        <h6 class="mb-0 lead"> <b>First Name</b></h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        {{user.firstName}} 
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0 lead"><b>Last Name</b></h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        {{user.lastName}} 
+                    </div>
+                </div>
+            <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0 lead"><b>Email</b></h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        {{user.email}}
+                    </div>
+                </div>
+            </div>
+     </div>
+     <div class="card mb-3">
+        <div class="card-body">
+           
+            <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12">
+                    <h6 class="mt-3 mb-2 text-primary">Address Details</h6>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                        
+                        <div class="form-group">
+                            <label class="lead" for="Street"><b>Street</b></label>
+                            <p class="text-secondary">{{user.address.streetAddress}}</p>
+                        </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label class="lead" for="ciTy"><b>City</b></label>
+                                <p class="text-secondary">{{user.address.city}}</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label class="lead" for="state"><b>State</b></label>
+                                <p class="text-secondary">{{user.address.state}}</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label class="lead" for="zIp"><b>Zip Code</b></label>
+                                <p class="text-secondary">{{user.address.zipcode}}</p>
+                            </div>
+                        </div>
+                        </div>
+                        
+                    </div>
+                
+            <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12">
+                    <div class="text-right">
+                        <button type="button" id="submit" name="submit" class="btn btn-primary" data-toggle="modal" data-target="#editAddress">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+</div>
+
+<div class="modal fade" id="editAddress" tabindex="-1" role="dialog" aria-labelledby="editAddress" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addNewProduct">Update Address</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form name="form" ((ngSubmit)="editAdd.form.valid"   #editAdd="ngForm" novalidate> 
+            
+            <div class="fmb-3">
+                <label class="col-md-4 control-label" for="pr_name">Street</label>  
+                <div class="mb-3">
+                    <input  class="form-control input-md" required="" type="text" name="street" #street="ngModel" [(ngModel)]="user.address.streetAddress" [ngClass]="{ 'is-invalid': street.touched && street.invalid }" required >
+            
+                    <div *ngIf="street.touched && street.invalid" class="invalid-feedback">
+                        <div *ngIf="street.errors.required">
+                            Street is Required.
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+
+            <div class="fmb-3">
+                <label class="col-md-4 control-label">City</label>  
+                <div class="mb-3">
+                    <input  class="form-control input-md" required="" type="text" name="city" #city="ngModel" [(ngModel)]="user.address.city" [ngClass]="{ 'is-invalid': city.touched && city.invalid }" required >
+            
+                    <div *ngIf="city.touched && city.invalid" class="invalid-feedback">
+                        <div *ngIf="city.errors.required">
+                            City is Required.
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+
+            <div class="fmb-3">
+                <label class="col-md-4 control-label">State</label>  
+                <div class="mb-3">
+                    <input  class="form-control input-md" required="" type="text" name="state" #state="ngModel" [(ngModel)]="user.address.state" [ngClass]="{ 'is-invalid': state.touched && state.invalid }" required >
+            
+                    <div *ngIf="state.touched && state.invalid" class="invalid-feedback">
+                        <div *ngIf="state.errors.required">
+                            State is Required.
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+            <div class="fmb-3">
+                <label class="col-md-4 control-label">Zip Code</label>  
+                <div class="mb-3">
+                    <input  class="form-control input-md" required="" type="text" name="zipcode" #zipcode="ngModel" [(ngModel)]="user.address.zipcode" [ngClass]="{ 'is-invalid': zipcode.touched && zipcode.invalid }" required >
+            
+                    <div *ngIf="zipcode.touched && zipcode.invalid" class="invalid-feedback">
+                        <div *ngIf="zipcode.errors.required">
+                            Zip Code is Required.
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+
+            </form>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button class="btn btn-primary" type="submit" data-dismiss="modal" (click)="updateAdd()"> Update Address</button>
+       
+        </div>
+    
+      </div>
+    </div>
+  </div>
+
+ 

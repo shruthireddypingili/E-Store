@@ -1,0 +1,35 @@
+
+
+
+
+<!-- Lisiting of Orders -->
+
+<div class="container">
+<h3 style="margin-top: 15px;">Manage Orders</h3>
+<br />
+<table class="table table-striped">
+    <thead style="background-color: rgb(240, 234, 248);">
+        <tr>
+            <th>Order Id</th>
+            <th>Order Placed On</th>
+            <th>Action</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let order of orders">
+            <div>
+            <td *ngIf="order.isDelievered" class="text-success">#{{order._id }}</td>
+            <td *ngIf="!order.isDelievered">#{{order._id }}</td>
+            </div>
+            <td>{{order.orderPlacedOn | date}}</td>
+            <td >
+                <button *ngIf="!order.isDelievered" class="btn btn1" style="margin-right: 10px;" (click)="process(order._id)">Process</button>
+                <button class="btn btn2 " (click)="deleteOrder(order._id)" >Delete</button></td>
+
+                
+        </tr>
+    </tbody>
+</table>
+</div>
+

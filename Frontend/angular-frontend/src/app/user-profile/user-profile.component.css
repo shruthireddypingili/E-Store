@@ -1,0 +1,19 @@
+
+.margin{
+    margin-top: 25px;
+    background-color: #f7f2fd;
+}
+
+.user-name{
+    text-align: center;
+
+}
+.user-email{
+    text-align: center;
+    
+}
+
+.modal-header{
+    background-color: rgb(233, 223, 249);
+}
+

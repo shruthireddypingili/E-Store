@@ -1,0 +1,82 @@
+
+<div class="container margin" >
+  <h4 class="bg"> Edit Product</h4>
+  <div class="container" style="margin-top: 25px;">
+  <div class="col-lg-6 offset-lg-3">  
+    <div class="form-group ">
+      <label class="col-md-4 control-label">Name</label>  
+      <div class="mb-3">
+          <input type="text"  class="form-control" name="name" [(ngModel)]="product.name">         
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="product_name">Department</label>  
+        <div class="mb-3">
+          <input  class="form-control input-md" required="" type="text" [(ngModel)]="product.category">
+        </div>
+    </div>
+    <!-- Text input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="product_name_fr">Price</label>  
+          <div class="mb-3">
+            <input  class="form-control input-md" required="" type="text" [(ngModel)]="product.price">
+          </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="available_quantity">Discount Price</label>  
+        <div class="mb-3">
+            <input  class="form-control input-md" required="" type="text" [(ngModel)]="product.discountPrice">
+           </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="available_quantity">Qty</label>  
+            <div class="mb-3">
+                <input  class="form-control input-md" required="" type="text" [(ngModel)]="product.qty">
+               </div>
+              </div>
+                  
+                  <!-- Text input-->
+          <div class="form-group ">
+            <label class="col-md-4 control-label" for="product_weight">Product image</label>  
+              <div class="mb-3">
+              <input  class="form-control input-md" required="" type="text" [(ngModel)]="product.image">
+              </div>
+          </div>
+                  
+                  
+                  
+                  <!-- Text input-->
+          <div class="form-group mb-3">
+            <label class="col-md-4 control-label" for="product_description">Product Description</label>
+              <div class="mb-3">                     
+                <textarea class="form-control" id="product_description" [(ngModel)]="product.description" 
+                        value="product.description"></textarea>
+              </div>
+            </div>
+                  
+                 
+                  <!-- Button -->
+                  
+            <div class="mb-3">
+              <label style="margin-right: 4px;" >Top Selling Products </label>
+              <input type="checkbox" [(ngModel)]="product.isTopProduct"  /><br>
+                         
+               <div>
+                  <button class="btn btn1" type="submit"  (click) ="updateProduct()">Update Product 
+                      </button>
+                    </div>   
+                  </div>  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

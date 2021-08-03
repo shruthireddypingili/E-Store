@@ -1,0 +1,156 @@
+<button type="button" class="btn btn1" data-toggle="modal" data-target="#addNewUser">
+  Add New User
+</button>
+
+
+<div class="container">
+  <!-- Modal -->
+  <div class="modal fade" id="addNewUser" tabindex="-1" role="dialog" aria-labelledby="addNewUser" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addNewUser">Add New User</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form name="form" ((ngSubmit)="newUser.form.valid"   #newUser="ngForm" novalidate> 
+
+            <div class="fmb-3">
+              <label class="col-md-4 control-label" >First Name</label>  
+              <div class="mb-3">
+              <input  class="form-control input-md" required="" type="text" name="firstName" #firstName="ngModel" [(ngModel)]="user.firstName" [ngClass]="{ 'is-invalid': firstName.touched && firstName.invalid }" required >
+      
+              <div *ngIf="firstName.touched && firstName.invalid" class="invalid-feedback">
+                <div *ngIf="firstName.errors.required">
+                  First Name is Required.
+                </div>
+              </div>
+                
+              </div>
+            </div>
+
+            <div class="fmb-3">
+              <label class="col-md-4 control-label" >Last Name</label>  
+              <div class="mb-3">
+              <input  class="form-control input-md" required="" type="text" name="lastName" #lastName="ngModel" [(ngModel)]="user.lastName" [ngClass]="{ 'is-invalid': lastName.touched && lastName.invalid }" required >
+      
+              <div *ngIf="lastName.touched && lastName.invalid" class="invalid-feedback">
+                <div *ngIf="lastName.errors.required">
+                  Last Name is Required.
+                </div>
+              </div>
+                
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="col-md-4 control-label" >Email </label>  
+              <input type="email" class="form-control" name="email"  #email="ngModel" 
+                  [(ngModel)]="user.email" [ngClass]="{ 'is-invalid': email.touched && email.invalid }" required email>
+
+                  <div *ngIf="email.touched && email.invalid" class="invalid-feedback" > 
+                      <div *ngIf="email.errors.required">
+                          User Email is required
+                         
+                      </div>
+                      <div *ngIf="email.errors.email">
+                          Email is not valid 
+                      </div>
+                      
+                      
+                      
+                  </div>
+          </div>  
+
+           
+          <div class="mb-3">
+            <label class="col-md-4 control-label" >Password</label>  
+            <input type="password" class="form-control" name="password" #password="ngModel" 
+            [(ngModel)] = "user.password"  [ngClass]="{ 'is-invalid': email.touched && password.invalid }" required minlength="6">
+
+            <div *ngIf="password.touched && password.invalid" class="invalid-feedback" > 
+                <div *ngIf="password.errors.required">
+                    Password is required
+                    
+                </div>
+                <div *ngIf="password.errors.minlength">
+                    Password must be 6 character long
+                    
+                </div>
+                
+               
+
+                
+            </div>
+        </div>
+
+        <div class="fmb-3">
+          <label class="col-md-4 control-label" >Role</label>  
+          <div class="mb-3">
+          <input  class="form-control input-md" required="" type="text" name="role" #role="ngModel" [(ngModel)]="user.role" [ngClass]="{ 'is-invalid': role.touched && role.invalid }" required >
+  
+          <div *ngIf="role.touched && role.invalid" class="invalid-feedback">
+            <div *ngIf="role.errors.required">
+              Role is Required.
+            </div>
+          </div>
+            
+          </div>
+        </div>
+
+        <div class="fmb-3">
+          <label class="col-md-4 control-label" >User Image</label>  
+          <div class="mb-3">
+          <input  class="form-control input-md" required="" type="text" name="profileImage" #profileImage="ngModel" [(ngModel)]="user.profileImage" [ngClass]="{ 'is-invalid': profileImage.touched && profileImage.invalid }" required >
+  
+          <div *ngIf="profileImage.touched && profileImage.invalid" class="invalid-feedback">
+            <div *ngIf="profileImage.errors.required">
+              Profile Image is Required.
+            </div>
+          </div>
+            
+          </div>
+        </div>
+           
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button class="btn btn-primary" type="submit" (click)="addProd()" data-dismiss="modal"> Add User</button>
+       
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Manage User -->
+    <h3 style="margin-top: 15px;">Manage Users</h3>
+    <br />
+    <table class="table table-striped">
+        <thead style="background-color: rgb(240, 234, 248);">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Action</th>
+    
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of userList">
+                <td>{{ user.firstName }} {{user.lastName}}</td>
+                <td>{{user.email }}</td>
+                <td>{{user.role }}</td>
+                <td><a [routerLink]="['/edit-user', user._id]" class="btn btn-outline-primary" style="margin-right: 10px;">Edit  </a>
+                    <a class="btn btn-outline-danger" (click) ="deleteUser(user._id)" >Delete</a>
+    
+                    
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+<!-- Modal for Edit -->
+

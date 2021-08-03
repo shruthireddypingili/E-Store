@@ -1,0 +1,117 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-7 style" >
+            <h3 class="header"> Welcome to E-Store!!!</h3>
+            <p class="text-center">Welcome to our online store! Our team is proud to announce that we're now open for business, and we look forward to serving you all in the future. 
+                Feel free to browse our entire product catalog, and let us know if you have any questions, comments or concerns about the items housed within. </p>
+            
+        </div>
+
+
+        <div class="col-md-4">
+            <div class="card card-container">
+            <h4 class="text-center">User Registration</h4>
+                <br />
+
+                <form name="form" [mustMatch]="['password', 'confirmpassword']" (ngSubmit)="registerForm.form.valid" #registerForm = "ngForm">
+                
+                    <div class="mb-3">
+                        <input type="text" class="form-control" name="firstname" #firstname="ngModel" 
+                        [(ngModel)] = "user.firstName" placeholder="First Name" [ngClass]="{ 'is-invalid': firstname.touched && firstname.invalid }" required>
+
+                        <div *ngIf="firstname.touched && firstname.invalid" class="invalid-feedback" > 
+                            <div *ngIf="fistname.errors.required">
+
+                            </div>
+                            First Name is required
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="text" class="form-control" name="lastname" #lastname="ngModel"
+                        [(ngModel)] = "user.lastName" placeholder="Last Name" [ngClass]="{ 'is-invalid': registerForm.touched && lastname.invalid }" required>
+                        
+                        <div *ngIf="lastname.touched && lastname.invalid" class="invalid-feedback" > 
+                            <div *ngIf="lastname.errors.required">
+                                
+                            </div>
+                            Last Name is required
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="email" class="form-control" name="email"  #email="ngModel"
+                            [(ngModel)]="user.email" placeholder="Email" [ngClass]="{ 'is-invalid': registerForm.touched && email.invalid }" required email>
+
+                            <div *ngIf="email.touched && email.invalid" class="invalid-feedback" > 
+                                <div *ngIf="email.errors.required">
+                                    User Email is required
+                                   
+                                </div>
+                                <div *ngIf="email.errors.email">
+                                    Email is not valid 
+                                </div>
+                                
+                                
+                                
+                            </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <input type="password" class="form-control" name="password" #password="ngModel" 
+                        [(ngModel)] = "user.password" placeholder="Password" [ngClass]="{ 'is-invalid': registerForm.touched && password.invalid }" required minlength="6">
+
+                        <div *ngIf="password.touched && password.invalid" class="invalid-feedback" > 
+                            <div *ngIf="password.errors.required">
+                                Password is required
+                                
+                            </div>
+                            <div *ngIf="password.errors.minlength">
+                                Password must be 6 character long
+                                
+                            </div>
+                            
+                           
+
+                            
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="password" class="form-control" name="confirmpassword" #confirmpassword="ngModel" [(ngModel)] = "user.confirmPassword" placeholder=" Confirm Password" [ngClass]="{ 'is-invalid': registerForm.touched && confirmpassword.invalid }" required mustmatch>
+                        <div *ngIf="registerForm.touched && confirmpassword.invalid" class="invalid-feedback"> 
+                            <div *ngIf="password.errors.required">
+                                Confirm Password is required
+
+                                
+                            </div>
+                            <div *ngIf="confirmpassword.errors.mustMatch">
+                                Passwords must match.
+                            </div>
+                        </div>
+
+                    </div>
+
+                   
+                    <div id="remember" class="checkbox">
+                        <label>
+                            <input type="checkbox" value="remember-me"> Remember me
+                        </label>
+                    </div>
+                    <div class="mb-3">
+                        <input class="btn btn-primary" type="submit" (click)="addUser()" [disabled]="!registerForm.form.valid" value="Sign up">
+                    </div>
+                </form>
+                
+                
+            </div>
+            </div>
+        </div>
+        
+ 
+</div>
+    
+
+
+

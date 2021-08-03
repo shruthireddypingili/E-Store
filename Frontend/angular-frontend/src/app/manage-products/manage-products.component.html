@@ -1,0 +1,166 @@
+
+
+<!-- Add Product Modal -->
+<!-- Button trigger modal -->
+<button type="button" class="btn btn1" data-toggle="modal" data-target="#addNewProduct">
+    Add New Product
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="addNewProduct" tabindex="-1" role="dialog" aria-labelledby="addNewProduct" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addNewProduct">Add Product</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form name="form" ((ngSubmit)="addprod.form.valid"   #addprod="ngForm" novalidate> 
+
+      <div class="mb-3 ">
+        <label class="col-md-4 control-label">Name</label>  
+        <div class="mb-3">
+        <input   class="form-control"  type="text" name="name" #name="ngModel" [(ngModel)]="product.name" [ngClass]="{ 'is-invalid': name.touched && name.invalid }" required maxlength="64">
+        <div *ngIf="name.touched && name.invalid" class="invalid-feedback">
+          <div *ngIf="name.errors.required">
+               Name is Required.
+          </div>
+          <div *ngIf="name.errors.maxlength">
+             Product Name must be less than 64 character
+        </div>
+        </div>
+        
+          
+        </div>
+      </div>
+      
+      <!-- Text input-->
+      <div class="fmb-3">
+        <label class="col-md-4 control-label" for="product_name">Department</label>  
+        <div class="mb-3">
+        <input  class="form-control input-md" required="" type="text" name="department" #department="ngModel" [(ngModel)]="product.category" [ngClass]="{ 'is-invalid': department.touched && department.invalid }" required >
+
+        <div *ngIf="department.touched && department.invalid" class="invalid-feedback">
+          <div *ngIf="department.errors.required">
+               Department is Required.
+          </div>
+        </div>
+          
+        </div>
+      </div>
+      
+      <!-- Text input-->
+      <div class="mb-3">
+        <label class="col-md-4 control-label" for="product_name_fr">Price</label>  
+        <div class="mb-3">
+        <input  class="form-control input-md" required="" type="text" name="Price" #Price="ngModel" [(ngModel)]="product.price" [ngClass]="{ 'is-invalid': Price.touched && Price.invalid }" required >
+        <div *ngIf="Price.touched && Price.invalid" class="invalid-feedback">
+          <div *ngIf="Price.errors.required">
+                Please Enter Price
+          </div>
+        </div>
+          
+        </div>
+      </div>
+      
+      
+      
+      <!-- Text input-->
+      <div class="mb-3">
+        <label class="col-md-4 control-label" for="available_quantity">Discount Price</label>  
+        <div class="mb-3">
+        <input  class="form-control input-md" required="" type="text" name="discountPrice"  #discountPrice="ngModel" [(ngModel)]="product.discountPrice" [ngClass]="{ 'is-invalid': discountPrice.touched && discountPrice.invalid }" required >
+        <div *ngIf="discountPrice.touched && discountPrice.invalid" class="invalid-feedback">
+          <div *ngIf="discountPrice.errors.required">
+               Enter Discount Price
+          </div>
+        </div>
+          
+        </div>
+      </div>
+      
+      <!-- Text input-->
+      <div class="mb-3 ">
+        <label class="col-md-4 control-label" for="product_weight">Product image</label>  
+        <div class="mb-3">
+        <input  class="form-control input-md" required="" type="text" name="image" #image="ngModel" [(ngModel)]="product.image" [ngClass]="{ 'is-invalid': image.touched && image.invalid }"  required >
+        <div *ngIf="image.touched && image.invalid" class="invalid-feedback">
+          <div *ngIf="image.errors.required">
+              Image  is Required.
+          </div>
+        </div>
+          
+        </div>
+      </div>
+      
+      
+      
+      <!-- Text input-->
+      <div class="mb-3">
+          <label class="col-md-4 control-label" for="product_description">Product Description</label>
+          <div class="mb-3">                     
+            <textarea class="form-control" id="product_description" name="description" #description="ngModel"  [(ngModel)]="product.description" [ngClass]="{ 'is-invalid': description.touched && description.invalid }" required minlength="20">
+              <div *ngIf="description.touched && description.invalid" class="invalid-feedback">
+                <div *ngIf="description.errors.required">
+                     Product Description is required.
+                </div>
+                <div *ngIf="password.errors.maxlength">
+                  Description must be more than 20 character
+              </div>
+              </div>
+
+            </textarea>
+          </div>
+        </div>
+      
+     
+      <!-- Button -->
+      
+        <div class="mb-3">
+            <label >Top Selling Products </label>
+            <input type="checkbox" name="isTopProduct" #sellingprod="ngModel" [(ngModel)]="product.isTopProduct"  ><br>
+           
+        </div>
+             
+
+    </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button class="btn btn-primary" type="submit" (click)="addProd()" data-dismiss="modal"> Add Product</button>
+       
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Lisiting of Product -->
+
+<div class="container">
+<h3 style="margin-top: 15px;">Manage Products</h3>
+<br />
+<table class="table table-striped">
+    <thead style="background-color: rgb(240, 234, 248);">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Action</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of productList">
+            <td>{{ product.name }}</td>
+            <td>{{product.discountPrice | currency}}</td>
+            <td><a [routerLink]="['/edit-products', product._id]" class="btn btn-outline-primary" style="margin-right: 10px;">Edit  |</a>
+                <a class="btn btn-outline-danger"  (click) ="deleteProd(product._id)">Delete</a>
+
+                
+        </tr>
+    </tbody>
+</table>
+</div>
+
